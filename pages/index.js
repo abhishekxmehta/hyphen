@@ -59,7 +59,7 @@ export default function Home() {
         <section>
           <motion.h2
             initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="text-3xl font-bold border-b border-gray-700 pb-2"
@@ -77,7 +77,7 @@ export default function Home() {
               <motion.li
                 key={index}
                 initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
@@ -91,7 +91,7 @@ export default function Home() {
         <section>
           <motion.h2
             initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="text-3xl font-bold border-b border-gray-700 pb-2"

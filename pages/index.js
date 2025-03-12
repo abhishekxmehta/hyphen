@@ -57,7 +57,7 @@ export default function Home() {
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 py-8 space-y-12">
         {/* Features Section */}
-        <section className="min-h-[300px]">
+        <section>
           <motion.h2
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1 }}
@@ -68,7 +68,8 @@ export default function Home() {
             Features
           </motion.h2>
           <ul className="mt-6 space-y-3 text-lg md:grid md:grid-cols-2 gap-4">
-            {["🛡️ Moderation: Powerful tools to keep your server safe.",
+            {[
+              "🛡️ Moderation: Powerful tools to keep your server safe.",
               "🎉 Giveaways: Host engaging giveaways easily.",
               "⚙️ Utilities: Useful commands to simplify server management.",
               "🎲 Fun Commands: Interactive games and entertainment.",
@@ -89,7 +90,7 @@ export default function Home() {
         </section>
 
         {/* Commands Section */}
-        <section className="min-h-[300px]">
+        <section>
           <motion.h2
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1 }}
@@ -108,7 +109,8 @@ export default function Home() {
                 </tr>
               </thead>
               <tbody className="text-center">
-                {[ ["Moderation 🛡️", "/ban, /kick, /mute, /warn, /purge"],
+                {[
+                  ["Moderation 🛡️", "/ban, /kick, /mute, /warn, /purge"],
                   ["Giveaways 🎉", "/giveaway start, /giveaway end, /reroll"],
                   ["Utilities ⚙️", "/serverinfo, /userinfo, /avatar"],
                   ["Fun 🎲", "/meme", "/8ball", "/joke"],
@@ -129,10 +131,59 @@ export default function Home() {
             </table>
           </div>
         </section>
+
+        {/* Get Started Section */}
+        <section>
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl font-bold border-b border-gray-700 pb-2"
+          >
+            Get Started
+          </motion.h2>
+          <ol className="mt-6 list-decimal list-inside space-y-2 text-lg">
+            {[
+              "Click the Invite HypheN button above.",
+              "Select your Discord server from the dropdown menu.",
+              "Authorize required permissions for HypheN.",
+              "Enjoy all the powerful features HypheN provides!",
+            ].map((step, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
+                {step}
+              </motion.li>
+            ))}
+          </ol>
+        </section>
       </main>
+
+      {/* Footer */}
+      <footer className="py-8 text-center text-sm border-t border-gray-800">
+        © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
+        <div className="mt-3 space-x-4">
+          {/* Footer Links */}
+          <Link href="/privacy-policy" className="hover:text-blue-400 inline-block">
+            Privacy Policy
+          </Link>{" "}
+          |
+          <Link href="/terms-of-service" className="hover:text-blue-400 inline-block">
+            Terms of Service
+          </Link>{" "}
+          |
+          <Link href="https://discord.gg/hyphen" className="hover:text-blue-400 inline-block">
+            Discord Community
+          </Link>
+        </div>
+      </footer>
     </div>
   );
 }
-
 
 

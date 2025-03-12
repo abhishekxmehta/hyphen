@@ -10,77 +10,67 @@ export default function Home() {
     <div className="bg-gray-900 text-white min-h-screen">
       <Head>
         <title>HypheN | Discord Bot</title>
-        <meta
-          name="description"
-          content="HypheN is a versatile Discord bot offering moderation, giveaways, utilities, fun commands, music, and more."
-        />
+        <meta name="description" content="HypheN is a versatile Discord bot offering moderation, giveaways, utilities, fun commands, music, and more." />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
       {/* Header Section */}
       <header className="py-12 text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+        <motion.h1 
+          initial={{ opacity: 0, y: -50 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 1 }} 
           className="text-5xl font-bold"
         >
           Meet HypheN
         </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
+        <motion.p 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          transition={{ duration: 1.5 }} 
           className="mt-4 text-xl max-w-2xl mx-auto px-4"
         >
-          A versatile Discord bot enhancing your server with moderation,
-          giveaways, utilities, fun commands, music, and more.
+          A versatile Discord bot enhancing your server with moderation, giveaways, utilities, fun commands, music, and more.
         </motion.p>
-        <div className="mt-6 flex justify-center gap-4">
-          {/* Invite Button */}
-          <Link
-            href={inviteLink}
-            className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-lg font-semibold inline-block"
-          >
-            Invite HypheN
+        <div className="mt-6 flex flex-wrap justify-center gap-4">
+          <Link href={inviteLink}>
+            <a className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-lg font-semibold inline-block focus:outline-none focus:ring-2 focus:ring-blue-300" 
+              aria-label="Invite HypheN to your server">
+              Invite HypheN
+            </a>
           </Link>
-          {/* Join Community Button */}
-          <Link
-            href="https://discord.gg/hyphen"
-            className="bg-green-600 hover:bg-green-700 px-5 py-2 rounded-lg font-semibold inline-block"
-          >
-            Join Community
+          <Link href="https://discord.gg/hyphen">
+            <a className="bg-green-600 hover:bg-green-700 px-5 py-2 rounded-lg font-semibold inline-block focus:outline-none focus:ring-2 focus:ring-green-300" 
+              aria-label="Join the HypheN Discord community">
+              Join Community
+            </a>
           </Link>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-6 py-8 space-y-12">
+        
         {/* Features Section */}
         <section>
-          <motion.h2
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+          <motion.h2 
+            initial={{ opacity: 0, x: -100 }} 
+            whileInView={{ opacity: 1 }} 
+            viewport={{ once: true }} 
+            transition={{ duration: 0.8 }} 
             className="text-3xl font-bold border-b border-gray-700 pb-2"
           >
             Features
           </motion.h2>
           <ul className="mt-6 space-y-3 text-lg">
             {[
-              "🛡️ Moderation: Powerful moderation tools to keep your server safe.",
-              "🎉 Giveaways: Host engaging giveaways effortlessly.",
+              "🛡️ Moderation: Powerful tools to keep your server safe.",
+              "🎉 Giveaways: Host engaging giveaways easily.",
               "⚙️ Utilities: Useful commands to simplify server management.",
-              "🎲 Fun Commands: Interactive games and entertainment for members.",
-              "🎵 Music: High-quality music playback directly in voice channels.",
+              "🎲 Fun Commands: Interactive games and entertainment.",
+              "🎵 Music: High-quality music playback.",
             ].map((feature, index) => (
-              <motion.li
-                key={index}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              >
+              <motion.li key={index} initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.2 }}>
                 {feature}
               </motion.li>
             ))}
@@ -89,11 +79,11 @@ export default function Home() {
 
         {/* Commands Section */}
         <section>
-          <motion.h2
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+          <motion.h2 
+            initial={{ opacity: 0, x: -100 }} 
+            whileInView={{ opacity: 1 }} 
+            viewport={{ once: true }} 
+            transition={{ duration: 0.8 }} 
             className="text-3xl font-bold border-b border-gray-700 pb-2"
           >
             Commands
@@ -110,16 +100,10 @@ export default function Home() {
                 ["Moderation 🛡️", "/ban, /kick, /mute, /warn, /purge"],
                 ["Giveaways 🎉", "/giveaway start, /giveaway end, /reroll"],
                 ["Utilities ⚙️", "/serverinfo, /userinfo, /avatar"],
-                ["Fun 🎲", "/meme", "/8ball", "/joke"],
-                ["Music 🎵", "/play", "/pause", "/queue", "/skip"],
+                ["Fun 🎲", "/meme, /8ball, /joke"],
+                ["Music 🎵", "/play, /pause, /queue, /skip"],
               ].map(([category, cmds], index) => (
-                <motion.tr
-                  key={category}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
-                >
+                <motion.tr key={category} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.2 }}>
                   <td className="border border-gray-700 px-4 py-2">{category}</td>
                   <td className="border border-gray-700 px-4 py-2">{cmds}</td>
                 </motion.tr>
@@ -130,11 +114,11 @@ export default function Home() {
 
         {/* Get Started Section */}
         <section>
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+          <motion.h2 
+            initial={{ opacity: 0 }} 
+            whileInView={{ opacity: 1 }} 
+            viewport={{ once: true }} 
+            transition={{ duration: 0.8 }} 
             className="text-3xl font-bold border-b border-gray-700 pb-2"
           >
             Get Started
@@ -146,13 +130,7 @@ export default function Home() {
               "Authorize required permissions for HypheN.",
               "Enjoy all the powerful features HypheN provides!",
             ].map((step, index) => (
-              <motion.li
-                key={index}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              >
+              <motion.li key={index} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.2 }}>
                 {step}
               </motion.li>
             ))}
@@ -164,20 +142,21 @@ export default function Home() {
       <footer className="py-8 text-center text-sm border-t border-gray-800">
         © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
         <div className="mt-3 space-x-4">
-          {/* Footer Links */}
-          <Link href="/privacy-policy" className="hover:text-blue-400 inline-block">
-            Privacy Policy
-          </Link>{" "}
+          <Link href="/privacy-policy">
+            <a className="hover:text-blue-400 inline-block">Privacy Policy</a>
+          </Link>
           |
-          <Link href="/terms-of-service" className="hover:text-blue-400 inline-block">
-            Terms of Service
-          </Link>{" "}
+          <Link href="/terms-of-service">
+            <a className="hover:text-blue-400 inline-block">Terms of Service</a>
+          </Link>
           |
-          <Link href="https://discord.gg/hyphen" className="hover:text-blue-400 inline-block">
-            Discord Community
+          <Link href="https://discord.gg/hyphen">
+            <a className="hover:text-blue-400 inline-block">Discord Community</a>
           </Link>
         </div>
       </footer>
     </div>
   );
 }
+
+

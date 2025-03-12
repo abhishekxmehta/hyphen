@@ -36,14 +36,14 @@ export default function Home() {
           giveaways, utilities, fun commands, music, and more.
         </motion.p>
         <div className="mt-6 flex justify-center gap-4">
-          {/* Invite Button - Corrected Link Usage */}
+          {/* Invite Button */}
           <Link
             href={inviteLink}
             className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-lg font-semibold inline-block"
           >
             Invite HypheN
           </Link>
-          {/* Join Community Button - Corrected Link Usage */}
+          {/* Join Community Button */}
           <Link
             href="https://discord.gg/hyphen"
             className="bg-green-600 hover:bg-green-700 px-5 py-2 rounded-lg font-semibold inline-block"
@@ -164,24 +164,16 @@ export default function Home() {
       <footer className="py-8 text-center text-sm border-t border-gray-800">
         © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
         <div className="mt-3 space-x-4">
-          <Link
-            href="/privacy-policy"
-            className="hover:text-blue-400 inline-block"
-          >
+          {/* Footer Links */}
+          <Link href="/privacy-policy" className="hover:text-blue-400 inline-block">
             Privacy Policy
-          </Link>
+          </Link>{" "}
           |
-          <Link
-            href="/terms-of-service"
-            className="hover:text-blue-400 inline-block"
-          >
+          <Link href="/terms-of-service" className="hover:text-blue-400 inline-block">
             Terms of Service
-          </Link>
+          </Link>{" "}
           |
-          <Link
-            href="https://discord.gg/hyphen"
-            className="hover:text-blue-400 inline-block"
-          >
+          <Link href="https://discord.gg/hyphen" className="hover:text-blue-400 inline-block">
             Discord Community
           </Link>
         </div>

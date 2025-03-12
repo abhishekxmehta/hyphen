@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
+import Head from 'next/head';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function Home() {
   const inviteLink =
-    "https://discord.com/oauth2/authorize?client_id=1338616254046535700&permissions=8&integration_type=0&scope=bot"
+    "https://discord.com/oauth2/authorize?client_id=1338616254046535700&permissions=8&integration_type=0&scope=bot";
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
@@ -164,28 +164,28 @@ export default function Home() {
       <footer className="py-8 text-center text-sm border-t border-gray-800">
         © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
         <div className="mt-3 space-x-4">
-            <Link
-                href="/privacy-policy"
-                className="hover:text-blue-400 inline-block"
-            >
-                Privacy Policy
-            </Link>{" "}
-            |
-            <Link
-                href="/terms-of-service"
-                className="hover:text-blue-400 inline-block"
-            >
-                Terms of Service
-            </Link>{" "}
-            |
-            <Link
-                href="https://discord.gg/hyphen"
-                className="hover:text-blue-400 inline-block"
-            >
-                Discord Community
-            </Link>
+          <Link
+            href="/privacy-policy"
+            className="hover:text-blue-400 inline-block"
+          >
+            Privacy Policy
+          </Link>
+          |
+          <Link
+            href="/terms-of-service"
+            className="hover:text-blue-400 inline-block"
+          >
+            Terms of Service
+          </Link>
+          |
+          <Link
+            href="https://discord.gg/hyphen"
+            className="hover:text-blue-400 inline-block"
+          >
+            Discord Community
+          </Link>
         </div>
       </footer>
     </div>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import Head from "next/head";
-import { motion } from "framer-motion";
+just change code here import Head from 'next/head';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   const inviteLink =
@@ -14,8 +14,6 @@ export default function Home() {
           content="HypheN is a versatile Discord bot offering moderation, giveaways, utilities, fun commands, music, and more."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="keywords" content="Discord Bot, HypheN, Moderation Bot, Music Bot, Fun Commands" />
-        <meta name="author" content="avi911" />
       </Head>
 
       {/* Hero Section */}
@@ -42,9 +40,6 @@ export default function Home() {
           <a
             href={inviteLink}
             className="bg-sunny-yellow hover:bg-gold px-6 py-3 rounded-lg font-semibold text-navy-blue shadow-md transition-transform transform hover:scale-105"
-            aria-label="Invite HypheN Bot to your server"
-            rel="noopener noreferrer"
-            target="_blank"
           >
             Invite HypheN
           </a>
@@ -52,9 +47,6 @@ export default function Home() {
           <a
             href="https://discord.gg/hyphen"
             className="bg-sunny-yellow hover:bg-gold px-6 py-3 rounded-lg font-semibold text-navy-blue shadow-md transition-transform transform hover:scale-105"
-            aria-label="Join the HypheN Community on Discord"
-            rel="noopener noreferrer"
-            target="_blank"
           >
             Join Community
           </a>
@@ -73,7 +65,7 @@ export default function Home() {
           >
             Features
           </motion.h2>
-
+          
           {/* Interactive Boxes */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -101,14 +93,14 @@ export default function Home() {
         <section id="commands">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="text-center text-3xl font-bold mb-8 text-gold"
           >
             Commands
           </motion.h2>
-
+          
           {/* Scroll Animation */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -151,7 +143,7 @@ export default function Home() {
         <section id="get-started" className="text-center">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="text-center text-3xl font-bold mb-8 text-gold"
@@ -184,7 +176,7 @@ export default function Home() {
         © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
         {/* Footer Links */}
         <div className="mt-4 space-x-4">
-          Made with ❤️ by{" "}
+          Made with ❤️ by{' '}
           <a
             href="https://discordapp.com/users/724914345003188265"
             target="_blank"

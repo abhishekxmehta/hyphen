@@ -6,7 +6,7 @@ export default function Home() {
     "https://discord.com/oauth2/authorize?client_id=1338616254046535700&permissions=8&integration_type=0&scope=bot";
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen">
+    <div className="bg-gradient-to-b from-gray-900 to-gray-800 text-white min-h-screen">
       <Head>
         <title>HypheN | Discord Bot</title>
         <meta
@@ -67,7 +67,7 @@ export default function Home() {
               <motion.div
                 key={index}
                 initial={{ scale: 1 }}
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="bg-gray-800 p-6 rounded-lg shadow-lg text-center"
               >
@@ -80,8 +80,14 @@ export default function Home() {
         {/* Commands Section */}
         <section id="commands">
           <h2 className="text-center text-3xl font-bold mb-8">Commands</h2>
-          {/* Responsive Table */}
-          <div className="overflow-x-auto">
+          {/* Scroll Animation */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="overflow-x-auto"
+          >
             <table className="w-full table-auto border-collapse border border-gray-700 text-sm md:text-base">
               <thead className="bg-gray-800">
                 <tr>
@@ -109,14 +115,20 @@ export default function Home() {
                 ))}
               </tbody>
             </table>
-          </div>
+          </motion.div>
         </section>
 
         {/* Get Started Section */}
         <section id="get-started" className="text-center">
           <h2 className="text-center text-3xl font-bold mb-8">Get Started</h2>
-          {/* Ordered Steps */}
-          <ol className="list-decimal list-inside space-y-4 text-lg max-w-md mx-auto">
+          {/* Scroll Animation */}
+          <motion.ol
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="list-decimal list-inside space-y-4 text-lg max-w-md mx-auto"
+          >
             {[
               "Click the Invite HypheN button above.",
               "Select your Discord server from the dropdown menu.",
@@ -125,7 +137,7 @@ export default function Home() {
             ].map((step, index) => (
               <li key={index}>{step}</li>
             ))}
-          </ol>
+          </motion.ol>
         </section>
       </main>
 

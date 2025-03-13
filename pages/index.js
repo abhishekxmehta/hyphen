@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -7,22 +7,19 @@ export default function Home() {
     "https://discord.com/oauth2/authorize?client_id=1338616254046535700&permissions=8&integration_type=0&scope=bot";
 
   const [hoveredFeature, setHoveredFeature] = useState(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Detect touch device on component mount
+  // Detect mobile device on component mount
   useEffect(() => {
-    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
-  const handleFeatureInteraction = (index) => {
-    if (isTouchDevice) {
-      // Toggle the feature on touch devices
-      setHoveredFeature(hoveredFeature === index ? null : index);
-    } else {
-      // Just set the hovered feature on desktop
-      setHoveredFeature(index);
-    }
-  };
 
   return (
     <div className="bg-gradient-to-b from-gray-900 to-gray-800 text-white min-h-screen">
@@ -89,8 +86,8 @@ export default function Home() {
             Features
           </motion.h2>
 
-          {/* Interactive Boxes */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+          {/* Interactive Boxes - New Approach */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { title: "🛡️ Moderation", description: "Powerful tools to keep your server safe including ban, kick, mute, and warning systems." },
               { title: "🎉 Giveaways", description: "Host engaging giveaways with customizable duration, winners, and prizes." },
@@ -98,70 +95,49 @@ export default function Home() {
               { title: "🎲 Fun Commands", description: "Interactive games and entertainment including memes, jokes, and trivia." },
               { title: "🎵 Music", description: "High-quality music playback with queue management, volume control, and playlist support." },
             ].map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                onMouseEnter={() => !isTouchDevice && setHoveredFeature(index)}
-                onMouseLeave={() => !isTouchDevice && setHoveredFeature(null)}
-                onClick={() => handleFeatureInteraction(index)}
-                whileHover={{ scale: 1.1 }}
-                className="bg-mocha-mousse p-6 rounded-lg shadow-lg text-center hover:bg-muted-rose transition-all duration-300 cursor-pointer relative"
-                role="button"
-                tabIndex="0"
-                aria-haspopup="true"
-              >
+              <div key={index} className="relative">
                 <motion.div
-                  initial={{ y: 0 }}
-                  animate={{ y: hoveredFeature === index ? -5 : 0 }}
-                  className="text-xl font-bold"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  onClick={() => setHoveredFeature(hoveredFeature === index ? null : index)}
+                  onMouseEnter={() => !isMobile && setHoveredFeature(index)}
+                  onMouseLeave={() => !isMobile && setHoveredFeature(null)}
+                  whileHover={{ scale: 1.05 }}
+                  className={`bg-mocha-mousse p-6 rounded-lg shadow-lg text-center transition-all duration-300 cursor-pointer ${hoveredFeature === index ? 'bg-muted-rose' : 'hover:bg-muted-rose'}`}
                 >
-                  {feature.title}
+                  <span className="text-xl font-bold">{feature.title}</span>
                 </motion.div>
-              </motion.div>
+                
+                {/* Expandable Description - Mobile Friendly */}
+                <AnimatePresence>
+                  {hoveredFeature === index && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="bg-crisp-white text-navy-blue p-4 rounded-lg shadow-lg mt-2 overflow-hidden"
+                    >
+                      <p>{feature.description}</p>
+                      {isMobile && (
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setHoveredFeature(null);
+                          }}
+                          className="mt-2 bg-navy-blue text-white px-3 py-1 rounded-md text-sm w-full"
+                        >
+                          Close
+                        </button>
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             ))}
           </div>
-          
-          {/* Global Popup Container - Always on top */}
-          {hoveredFeature !== null && (
-            <div className="fixed inset-0 pointer-events-none z-[9999] flex items-center justify-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.2 }}
-                className="pointer-events-auto bg-crisp-white text-navy-blue p-4 rounded-lg shadow-lg w-64 max-w-[90vw] absolute"
-                style={{
-                  top: isTouchDevice ? '50%' : undefined,
-                  left: isTouchDevice ? '50%' : '50%',
-                  transform: isTouchDevice ? 'translate(-50%, -50%)' : 'translateX(-50%)',
-                  bottom: isTouchDevice ? undefined : '10%'
-                }}
-              >
-                {[
-                  "Powerful tools to keep your server safe including ban, kick, mute, and warning systems.",
-                  "Host engaging giveaways with customizable duration, winners, and prizes.",
-                  "Useful commands to simplify server management with role assignment, polls, and more.",
-                  "Interactive games and entertainment including memes, jokes, and trivia.",
-                  "High-quality music playback with queue management, volume control, and playlist support."
-                ][hoveredFeature]}
-                
-                {isTouchDevice && (
-                  <button 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setHoveredFeature(null);
-                    }}
-                    className="mt-2 bg-navy-blue text-white px-3 py-1 rounded-md text-sm"
-                  >
-                    Close
-                  </button>
-                )}
-              </motion.div>
-            </div>
-          )}
         </section>
 
         {/* Commands Section */}

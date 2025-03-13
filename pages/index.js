@@ -1,12 +1,28 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
   const inviteLink =
     "https://discord.com/oauth2/authorize?client_id=1338616254046535700&permissions=8&integration_type=0&scope=bot";
 
   const [hoveredFeature, setHoveredFeature] = useState(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  // Detect touch device on component mount
+  useEffect(() => {
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
+
+  const handleFeatureInteraction = (index) => {
+    if (isTouchDevice) {
+      // Toggle the feature on touch devices
+      setHoveredFeature(hoveredFeature === index ? null : index);
+    } else {
+      // Just set the hovered feature on desktop
+      setHoveredFeature(index);
+    }
+  };
 
   return (
     <div className="bg-gradient-to-b from-gray-900 to-gray-800 text-white min-h-screen">
@@ -73,85 +89,79 @@ export default function Home() {
             Features
           </motion.h2>
 
-         {/* Interactive Boxes */}
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-  {[
-    { title: "🛡️ Moderation", description: "Powerful tools to keep your server safe including ban, kick, mute, and warning systems." },
-    { title: "🎉 Giveaways", description: "Host engaging giveaways with customizable duration, winners, and prizes." },
-    { title: "⚙️ Utilities", description: "Useful commands to simplify server management with role assignment, polls, and more." },
-    { title: "🎲 Fun Commands", description: "Interactive games and entertainment including memes, jokes, and trivia." },
-    { title: "🎵 Music", description: "High-quality music playback with queue management, volume control, and playlist support." },
-  ].map((feature, index) => (
-    <motion.div
-      key={index}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      onMouseEnter={() => setHoveredFeature(index)}
-      onMouseLeave={() => setHoveredFeature(null)}
-      whileHover={{ scale: 1.1 }}
-      className="bg-mocha-mousse p-6 rounded-lg shadow-lg text-center hover:bg-muted-rose transition-all duration-300 cursor-pointer relative"
-    >
-      <motion.div
-        initial={{ y: 0 }}
-        animate={{ y: hoveredFeature === index ? -5 : 0 }}
-        className="text-xl font-bold"
-      >
-        {feature.title}
-      </motion.div>
-    </motion.div>
-  ))}
-</div>
-
-{/* Global Popup Container */}
-{hoveredFeature !== null && (
-  <div className="fixed inset-0 pointer-events-none z-[9999]">
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.2 }}
-      className="pointer-events-auto bg-crisp-white text-navy-blue p-4 rounded-lg shadow-lg absolute"
-      style={{
-        top: typeof window !== 'undefined' ? window.event?.clientY + 10 : 0,
-        left: typeof window !== 'undefined' ? window.event?.clientX : 0,
-        maxWidth: "250px"
-      }}
-    >
-      {hoveredFeature !== null && [
-        "Powerful tools to keep your server safe including ban, kick, mute, and warning systems.",
-        "Host engaging giveaways with customizable duration, winners, and prizes.",
-        "Useful commands to simplify server management with role assignment, polls, and more.",
-        "Interactive games and entertainment including memes, jokes, and trivia.",
-        "High-quality music playback with queue management, volume control, and playlist support."
-      ][hoveredFeature]}
-    </motion.div>
-  </div>
-)}
-
-
-                {/* Popup Box - Using portal approach */}
-                {hoveredFeature === index && (
-                  <div className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ duration: 0.3 }}
-                      className="pointer-events-auto bg-crisp-white text-navy-blue p-4 rounded-lg shadow-lg w-64 absolute"
-                      style={{
-                        top: "auto",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        maxWidth: "250px"
-                      }}
-                    >
-                      {feature.description}
-                    </motion.div>
-                  </div>
-                )}
+          {/* Interactive Boxes */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+            {[
+              { title: "🛡️ Moderation", description: "Powerful tools to keep your server safe including ban, kick, mute, and warning systems." },
+              { title: "🎉 Giveaways", description: "Host engaging giveaways with customizable duration, winners, and prizes." },
+              { title: "⚙️ Utilities", description: "Useful commands to simplify server management with role assignment, polls, and more." },
+              { title: "🎲 Fun Commands", description: "Interactive games and entertainment including memes, jokes, and trivia." },
+              { title: "🎵 Music", description: "High-quality music playback with queue management, volume control, and playlist support." },
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onMouseEnter={() => !isTouchDevice && setHoveredFeature(index)}
+                onMouseLeave={() => !isTouchDevice && setHoveredFeature(null)}
+                onClick={() => handleFeatureInteraction(index)}
+                whileHover={{ scale: 1.1 }}
+                className="bg-mocha-mousse p-6 rounded-lg shadow-lg text-center hover:bg-muted-rose transition-all duration-300 cursor-pointer relative"
+                role="button"
+                tabIndex="0"
+                aria-haspopup="true"
+              >
+                <motion.div
+                  initial={{ y: 0 }}
+                  animate={{ y: hoveredFeature === index ? -5 : 0 }}
+                  className="text-xl font-bold"
+                >
+                  {feature.title}
+                </motion.div>
               </motion.div>
             ))}
           </div>
+          
+          {/* Global Popup Container - Always on top */}
+          {hoveredFeature !== null && (
+            <div className="fixed inset-0 pointer-events-none z-[9999] flex items-center justify-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.2 }}
+                className="pointer-events-auto bg-crisp-white text-navy-blue p-4 rounded-lg shadow-lg w-64 max-w-[90vw] absolute"
+                style={{
+                  top: isTouchDevice ? '50%' : undefined,
+                  left: isTouchDevice ? '50%' : '50%',
+                  transform: isTouchDevice ? 'translate(-50%, -50%)' : 'translateX(-50%)',
+                  bottom: isTouchDevice ? undefined : '10%'
+                }}
+              >
+                {[
+                  "Powerful tools to keep your server safe including ban, kick, mute, and warning systems.",
+                  "Host engaging giveaways with customizable duration, winners, and prizes.",
+                  "Useful commands to simplify server management with role assignment, polls, and more.",
+                  "Interactive games and entertainment including memes, jokes, and trivia.",
+                  "High-quality music playback with queue management, volume control, and playlist support."
+                ][hoveredFeature]}
+                
+                {isTouchDevice && (
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setHoveredFeature(null);
+                    }}
+                    className="mt-2 bg-navy-blue text-white px-3 py-1 rounded-md text-sm"
+                  >
+                    Close
+                  </button>
+                )}
+              </motion.div>
+            </div>
+          )}
         </section>
 
         {/* Commands Section */}
@@ -317,55 +327,53 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-<footer className="py-8 text-center bg-navy-blue text-crisp-white">
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5 }}
-  >
-    © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
-    
-    {/* Footer Links */}
-    <div className="mt-4 space-x-4">
-      Website made with ❤️ by{' '}
-      <motion.a
-        href="https://discordapp.com/users/724914345003188265"
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ scale: 1.1, color: "#FFD700" }}
-        className="text-gold hover:text-muted-yellow underline"
-      >
-        avi911
-      </motion.a>
-    </div>
-    
-    <div className="mt-2 space-x-4">
-      Bot made by{' '}
-      <motion.a
-        href="https://discordapp.com/users/1347572891302236231"
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ scale: 1.1, color: "#FFD700" }}
-        className="text-gold hover:text-muted-yellow underline"
-      >
-        yellowflash
-      </motion.a>
-    </div>
-    
-    <div className="mt-6 flex justify-center space-x-6">
-      <motion.a
-        href="https://discord.gg/hyphen"
-        whileHover={{ y: -5, color: "#7289DA" }}
-        className="text-crisp-white hover:text-indigo-400"
-      >
-        Discord
-      </motion.a>
-    </div>
-  </motion.div>
-</footer>
-
+      <footer className="py-8 text-center bg-navy-blue text-crisp-white">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
+          
+          {/* Footer Links */}
+          <div className="mt-4 space-x-4">
+            Website made with ❤️ by{' '}
+            <motion.a
+              href="https://discordapp.com/users/724914345003188265"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1, color: "#FFD700" }}
+              className="text-gold hover:text-muted-yellow underline"
+            >
+              avi911
+            </motion.a>
+          </div>
+          
+          <div className="mt-2 space-x-4">
+            Bot made by{' '}
+            <motion.a
+              href="https://discordapp.com/users/1347572891302236231"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1, color: "#FFD700" }}
+              className="text-gold hover:text-muted-yellow underline"
+            >
+              yellowflash
+            </motion.a>
+          </div>
+          
+          <div className="mt-6 flex justify-center space-x-6">
+            <motion.a
+              href="https://discord.gg/hyphen"
+              whileHover={{ y: -5, color: "#7289DA" }}
+              className="text-crisp-white hover:text-indigo-400"
+            >
+              Discord
+            </motion.a>
+          </div>
+        </motion.div>
+      </footer>
     </div>
   );
 }
-

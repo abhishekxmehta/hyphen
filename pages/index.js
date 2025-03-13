@@ -101,22 +101,24 @@ export default function Home() {
                   {feature.title}
                 </motion.div>
 
-                {/* Popup Box - Fixed positioning */}
+                {/* Popup Box - Using portal approach */}
                 {hoveredFeature === index && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="fixed bg-crisp-white text-navy-blue p-4 rounded-lg shadow-lg z-50 w-64"
-                    style={{
-                      top: "auto",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      maxWidth: "250px"
-                    }}
-                  >
-                    {feature.description}
-                  </motion.div>
+                  <div className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="pointer-events-auto bg-crisp-white text-navy-blue p-4 rounded-lg shadow-lg w-64 absolute"
+                      style={{
+                        top: "auto",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        maxWidth: "250px"
+                      }}
+                    >
+                      {feature.description}
+                    </motion.div>
+                  </div>
                 )}
               </motion.div>
             ))}

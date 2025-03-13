@@ -73,33 +73,62 @@ export default function Home() {
             Features
           </motion.h2>
 
-          {/* Interactive Boxes */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-            {[
-              { title: "🛡️ Moderation", description: "Powerful tools to keep your server safe including ban, kick, mute, and warning systems." },
-              { title: "🎉 Giveaways", description: "Host engaging giveaways with customizable duration, winners, and prizes." },
-              { title: "⚙️ Utilities", description: "Useful commands to simplify server management with role assignment, polls, and more." },
-              { title: "🎲 Fun Commands", description: "Interactive games and entertainment including memes, jokes, and trivia." },
-              { title: "🎵 Music", description: "High-quality music playback with queue management, volume control, and playlist support." },
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                onMouseEnter={() => setHoveredFeature(index)}
-                onMouseLeave={() => setHoveredFeature(null)}
-                whileHover={{ scale: 1.1 }}
-                className="bg-mocha-mousse p-6 rounded-lg shadow-lg text-center hover:bg-muted-rose transition-all duration-300 cursor-pointer relative"
-              >
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{ y: hoveredFeature === index ? -5 : 0 }}
-                  className="text-xl font-bold"
-                >
-                  {feature.title}
-                </motion.div>
+         {/* Interactive Boxes */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+  {[
+    { title: "🛡️ Moderation", description: "Powerful tools to keep your server safe including ban, kick, mute, and warning systems." },
+    { title: "🎉 Giveaways", description: "Host engaging giveaways with customizable duration, winners, and prizes." },
+    { title: "⚙️ Utilities", description: "Useful commands to simplify server management with role assignment, polls, and more." },
+    { title: "🎲 Fun Commands", description: "Interactive games and entertainment including memes, jokes, and trivia." },
+    { title: "🎵 Music", description: "High-quality music playback with queue management, volume control, and playlist support." },
+  ].map((feature, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      onMouseEnter={() => setHoveredFeature(index)}
+      onMouseLeave={() => setHoveredFeature(null)}
+      whileHover={{ scale: 1.1 }}
+      className="bg-mocha-mousse p-6 rounded-lg shadow-lg text-center hover:bg-muted-rose transition-all duration-300 cursor-pointer relative"
+    >
+      <motion.div
+        initial={{ y: 0 }}
+        animate={{ y: hoveredFeature === index ? -5 : 0 }}
+        className="text-xl font-bold"
+      >
+        {feature.title}
+      </motion.div>
+    </motion.div>
+  ))}
+</div>
+
+{/* Global Popup Container */}
+{hoveredFeature !== null && (
+  <div className="fixed inset-0 pointer-events-none z-[9999]">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.2 }}
+      className="pointer-events-auto bg-crisp-white text-navy-blue p-4 rounded-lg shadow-lg absolute"
+      style={{
+        top: typeof window !== 'undefined' ? window.event?.clientY + 10 : 0,
+        left: typeof window !== 'undefined' ? window.event?.clientX : 0,
+        maxWidth: "250px"
+      }}
+    >
+      {hoveredFeature !== null && [
+        "Powerful tools to keep your server safe including ban, kick, mute, and warning systems.",
+        "Host engaging giveaways with customizable duration, winners, and prizes.",
+        "Useful commands to simplify server management with role assignment, polls, and more.",
+        "Interactive games and entertainment including memes, jokes, and trivia.",
+        "High-quality music playback with queue management, volume control, and playlist support."
+      ][hoveredFeature]}
+    </motion.div>
+  </div>
+)}
+
 
                 {/* Popup Box - Using portal approach */}
                 {hoveredFeature === index && (

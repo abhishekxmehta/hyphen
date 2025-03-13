@@ -310,20 +310,7 @@ export default function Home() {
             </motion.a>
           </div>
           
-          <div className="mt-6 flex justify-center space-x-6">
-            <motion.a
-              href="https://twitter.com/hyphenbot"
-              whileHover={{ y: -5, color: "#1DA1F2" }}
-              className="text-crisp-white hover:text-blue-400"
-            >
-              Twitter
-            </motion.a>
-            <motion.a
-              href="https://github.com/hyphenbot"
-              whileHover={{ y: -5, color: "#6e5494" }}
-              className="text-crisp-white hover:text-purple-400"
-            >
-              GitHub
+          
             </motion.a>
             <motion.a
               href="https://discord.gg/hyphen"

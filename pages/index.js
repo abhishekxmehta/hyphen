@@ -151,14 +151,27 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-8 text-center bg-navy-blue text-crisp-white">
-        © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
-        {/* Footer Links */}
-        <div className="mt-4 space-x-4">
-          <a href="#" className="hover:text-gold">Privacy Policy</a> |
-          <a href="#" className="hover:text-gold">Terms of Service</a> |
-          <a href="#" className="hover:text-gold">Discord Community</a>
-        </div>
-      </footer>
+  © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
+  {/* Footer Links */}
+  <div className="mt-4 space-x-4">
+    <a href="#" className="hover:text-gold">Privacy Policy</a> |
+    <a href="#" className="hover:text-gold">Terms of Service</a> |
+    <a href="#" className="hover:text-gold">Discord Community</a>
+  </div>
+  {/* Made with ❤️ by Avi911 */}
+  <div className="mt-6">
+    Made with ❤️ by{' '}
+    <a
+      href="https://discordapp.com/users/724914345003188265"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gold hover:underline"
+    >
+      Avi911
+    </a>
+  </div>
+</footer>
+
     </div>
   );
 }

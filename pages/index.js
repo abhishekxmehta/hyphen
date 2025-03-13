@@ -40,14 +40,14 @@ export default function Home() {
           {/* Invite Button */}
           <Link
             href={inviteLink}
-            className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold inline-block text-center"
+            className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold inline-block text-center w-full sm:w-auto"
           >
             Invite HypheN
           </Link>
           {/* Join Community Button */}
           <Link
             href="https://discord.gg/hyphen"
-            className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-semibold inline-block text-center"
+            className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-semibold inline-block text-center w-full sm:w-auto"
           >
             Join Community
           </Link>
@@ -185,5 +185,3 @@ export default function Home() {
     </div>
   );
 }
-
-

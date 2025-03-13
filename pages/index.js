@@ -56,9 +56,16 @@ export default function Home() {
       {/* Features Section */}
       <main className="max-w-6xl mx-auto px-4 py-16 space-y-12">
         <section id="features">
-          <h2 className="text-center text-3xl font-bold mb-8 text-gold">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center text-3xl font-bold mb-8 text-gold"
+          >
             Features
-          </h2>
+          </motion.h2>
+          
           {/* Interactive Boxes */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -70,9 +77,10 @@ export default function Home() {
             ].map((feature, index) => (
               <motion.div
                 key={index}
-                initial={{ scale: 1 }}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }} // Staggered animation
                 className="bg-mocha-mousse p-6 rounded-lg shadow-lg text-center hover:bg-muted-rose transition-colors"
               >
                 {feature}
@@ -83,9 +91,16 @@ export default function Home() {
 
         {/* Commands Section */}
         <section id="commands">
-          <h2 className="text-center text-3xl font-bold mb-8 text-gold">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center text-3xl font-bold mb-8 text-gold"
+          >
             Commands
-          </h2>
+          </motion.h2>
+          
           {/* Scroll Animation */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -126,9 +141,16 @@ export default function Home() {
 
         {/* Get Started Section */}
         <section id="get-started" className="text-center">
-          <h2 className="text-center text-3xl font-bold mb-8 text-gold">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center text-3xl font-bold mb-8 text-gold"
+          >
             Get Started
-          </h2>
+          </motion.h2>
+
           {/* Scroll Animation */}
           <motion.ol
             initial={{ opacity: 0 }}
@@ -151,26 +173,22 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-8 text-center bg-navy-blue text-crisp-white">
-  © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
-  {/* Footer Links */}
-  <div className="mt-4 space-x-4">
-    
-  </div>
-  {/* Made with ❤️ by Avi911 */}
-  <div className="mt-6">
-    Made with ❤️ by{' '}
-    <a
-      href="https://discordapp.com/users/724914345003188265"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-gold hover:underline"
-    >
-      avi911
-    </a>
-  </div>
-</footer>
-
+        © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
+        {/* Footer Links */}
+        <div className="mt-4 space-x-4">
+          Made with ❤️ by{' '}
+          <a
+            href="https://discordapp.com/users/724914345003188265"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold hover:text-muted-yellow underline"
+          >
+            Avi911
+          </a>.
+        </div>
+      </footer>
     </div>
   );
 }
+
 

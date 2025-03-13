@@ -1,9 +1,12 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export default function Home() {
   const inviteLink =
     "https://discord.com/oauth2/authorize?client_id=1338616254046535700&permissions=8&integration_type=0&scope=bot";
+
+  const [hoveredFeature, setHoveredFeature] = useState(null);
 
   return (
     <div className="bg-gradient-to-b from-gray-900 to-gray-800 text-white min-h-screen">
@@ -65,26 +68,36 @@ export default function Home() {
           >
             Features
           </motion.h2>
-          
+
           {/* Interactive Boxes */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative">
             {[
-              "🛡️ Moderation: Powerful tools to keep your server safe.",
-              "🎉 Giveaways: Host engaging giveaways easily.",
-              "⚙️ Utilities: Useful commands to simplify server management.",
-              "🎲 Fun Commands: Interactive games and entertainment.",
-              "🎵 Music: High-quality music playback.",
+              { title: "🛡️ Moderation", description: "Powerful tools to keep your server safe." },
+              { title: "🎉 Giveaways", description: "Host engaging giveaways easily." },
+              { title: "⚙️ Utilities", description: "Useful commands to simplify server management." },
+              { title: "🎲 Fun Commands", description: "Interactive games and entertainment." },
+              { title: "🎵 Music", description: "High-quality music playback." },
             ].map((feature, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }} // Staggered animation
-                className="bg-mocha-mousse p-6 rounded-lg shadow-lg text-center hover:bg-muted-rose transition-colors"
+                onMouseEnter={() => setHoveredFeature(index)}
+                onMouseLeave={() => setHoveredFeature(null)}
+                className="bg-mocha-mousse p-6 rounded-lg shadow-lg text-center hover:bg-muted-rose transition-colors cursor-pointer relative"
               >
-                {feature}
-              </motion.div>
+                {feature.title}
+
+                {/* Popup Box */}
+                {hoveredFeature === index && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 bg-crisp-white text-navy-blue p-4 rounded-lg shadow-lg z-10"
+                  >
+                    {feature.description}
+                  </motion.div>
+                )}
+              </div>
             ))}
           </div>
         </section>
@@ -100,7 +113,7 @@ export default function Home() {
           >
             Commands
           </motion.h2>
-          
+
           {/* Scroll Animation */}
           <motion.div
             initial={{ opacity: 0 }}

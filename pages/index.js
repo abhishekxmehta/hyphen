@@ -17,12 +17,12 @@ export default function Home() {
       </Head>
 
       {/* Hero Section */}
-      <header className="text-center py-16 px-4 bg-gradient-to-r from-gray-900 to-gray-700">
+      <header className="text-center py-16 px-4 bg-gradient-to-r from-blue-500 to-purple-600">
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-5xl font-bold text-gold"
+          className="text-5xl font-bold text-yellow-400"
         >
           Meet HypheN
         </motion.h1>
@@ -39,7 +39,7 @@ export default function Home() {
           {/* Invite HypheN Button */}
           <a
             href={inviteLink}
-            className="bg-gold hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold text-gray-900 shadow-md transition-transform transform hover:scale-105"
+            className="bg-yellow-400 hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold text-gray-900 shadow-md transition-transform transform hover:scale-105"
           >
             Invite HypheN
           </a>
@@ -56,7 +56,7 @@ export default function Home() {
       {/* Features Section */}
       <main className="max-w-6xl mx-auto px-4 py-16 space-y-12">
         <section id="features">
-          <h2 className="text-center text-3xl font-bold mb-8 text-gold">
+          <h2 className="text-center text-3xl font-bold mb-8 text-yellow-400">
             Features
           </h2>
           {/* Interactive Boxes */}
@@ -83,7 +83,7 @@ export default function Home() {
 
         {/* Commands Section */}
         <section id="commands">
-          <h2 className="text-center text-3xl font-bold mb-8 text-gold">
+          <h2 className="text-center text-3xl font-bold mb-8 text-yellow-400">
             Commands
           </h2>
           {/* Scroll Animation */}
@@ -126,7 +126,7 @@ export default function Home() {
 
         {/* Get Started Section */}
         <section id="get-started" className="text-center">
-          <h2 className="text-center text-3xl font-bold mb-8 text-gold">
+          <h2 className="text-center text-3xl font-bold mb-8 text-yellow-400">
             Get Started
           </h2>
           {/* Scroll Animation */}
@@ -154,14 +154,13 @@ export default function Home() {
         © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
         {/* Footer Links */}
         <div className="mt-4 space-x-4">
-          <a href="#" className="hover:text-gold">Privacy Policy</a> |
-          <a href="#" className="hover:text-gold">Terms of Service</a> |
-          <a href="#" className="hover:text-gold">Discord Community</a>
+          <a href="#" className="hover:text-yellow">Privacy Policy</a> |
+          <a href="#" className="hover:text-yellow">Terms of Service</a> |
+          <a href="#" className="hover:text-yellow">Discord Community</a>
         </div>
       </footer>
     </div>
   );
 }
-
 
 

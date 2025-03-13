@@ -6,7 +6,7 @@ export default function Home() {
     "https://discord.com/oauth2/authorize?client_id=1338616254046535700&permissions=8&integration_type=0&scope=bot";
 
   return (
-    <div className="bg-gradient-to-b from-gray-900 to-gray-800 text-white min-h-screen">
+    <div className="bg-gradient-to-b from-navy-blue to-mocha-mousse text-white min-h-screen">
       <Head>
         <title>HypheN | Discord Bot</title>
         <meta
@@ -17,12 +17,12 @@ export default function Home() {
       </Head>
 
       {/* Hero Section */}
-      <header className="text-center py-16 px-4 bg-gradient-to-r from-blue-500 to-purple-600">
+      <header className="text-center py-16 px-4 bg-gradient-to-r from-navy-blue to-muted-rose">
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-5xl font-bold"
+          className="text-5xl font-bold text-crisp-white"
         >
           Meet HypheN
         </motion.h1>
@@ -30,7 +30,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
-          className="mt-4 text-lg max-w-xl mx-auto"
+          className="mt-4 text-lg max-w-xl mx-auto text-crisp-white"
         >
           A versatile Discord bot enhancing your server with moderation,
           giveaways, utilities, fun commands, music, and more.
@@ -38,13 +38,13 @@ export default function Home() {
         <div className="mt-6 flex justify-center gap-4">
           <a
             href={inviteLink}
-            className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold"
+            className="bg-verde-green hover:bg-verde-green-dark px-6 py-3 rounded-lg font-semibold text-crisp-white"
           >
             Invite HypheN
           </a>
           <a
             href="https://discord.gg/hyphen"
-            className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-semibold"
+            className="bg-sunny-yellow hover:bg-sunny-yellow-dark px-6 py-3 rounded-lg font-semibold text-navy-blue"
           >
             Join Community
           </a>
@@ -54,7 +54,9 @@ export default function Home() {
       {/* Features Section */}
       <main className="max-w-6xl mx-auto px-4 py-16 space-y-12">
         <section id="features">
-          <h2 className="text-center text-3xl font-bold mb-8">Features</h2>
+          <h2 className="text-center text-3xl font-bold mb-8 text-sunny-yellow">
+            Features
+          </h2>
           {/* Interactive Boxes */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -69,7 +71,7 @@ export default function Home() {
                 initial={{ scale: 1 }}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="bg-gray-800 p-6 rounded-lg shadow-lg text-center"
+                className="bg-muted-rose p-6 rounded-lg shadow-lg text-center hover:bg-mocha-mousse transition-colors"
               >
                 {feature}
               </motion.div>
@@ -79,7 +81,9 @@ export default function Home() {
 
         {/* Commands Section */}
         <section id="commands">
-          <h2 className="text-center text-3xl font-bold mb-8">Commands</h2>
+          <h2 className="text-center text-3xl font-bold mb-8 text-sunny-yellow">
+            Commands
+          </h2>
           {/* Scroll Animation */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -88,8 +92,8 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="overflow-x-auto"
           >
-            <table className="w-full table-auto border-collapse border border-gray-700 text-sm md:text-base">
-              <thead className="bg-gray-800">
+            <table className="w-full table-auto border-collapse border border-gray-700 text-sm md:text-base bg-crisp-white text-navy-blue">
+              <thead className="bg-muted-rose text-crisp-white">
                 <tr>
                   <th className="border border-gray-700 px-4 py-2">Category</th>
                   <th className="border border-gray-700 px-4 py-2">Commands</th>
@@ -120,7 +124,9 @@ export default function Home() {
 
         {/* Get Started Section */}
         <section id="get-started" className="text-center">
-          <h2 className="text-center text-3xl font-bold mb-8">Get Started</h2>
+          <h2 className="text-center text-3xl font-bold mb-8 text-sunny-yellow">
+            Get Started
+          </h2>
           {/* Scroll Animation */}
           <motion.ol
             initial={{ opacity: 0 }}
@@ -142,16 +148,17 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="py-8 text-center bg-gray-800">
+      <footer className="py-8 text-center bg-navy-blue text-crisp-white">
         © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
         {/* Footer Links */}
         <div className="mt-4 space-x-4">
-          <a href="#" className="hover:text-blue-400">Privacy Policy</a> |
-          <a href="#" className="hover:text-blue-400">Terms of Service</a> |
-          <a href="#" className="hover:text-blue-400">Discord Community</a>
+          <a href="#" className="hover:text-sunny-yellow">Privacy Policy</a> |
+          <a href="#" className="hover:text-sunny-yellow">Terms of Service</a> |
+          <a href="#" className="hover:text-sunny-yellow">Discord Community</a>
         </div>
       </footer>
     </div>
   );
 }
+
 

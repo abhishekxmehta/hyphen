@@ -37,12 +37,14 @@ export default function Home() {
           giveaways, utilities, fun commands, music, and more.
         </motion.p>
         <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4">
+          {/* Invite Button */}
           <Link
             href={inviteLink}
             className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold inline-block text-center w-full sm:w-auto"
           >
             Invite HypheN
           </Link>
+          {/* Join Community Button */}
           <Link
             href="https://discord.gg/hyphen"
             className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-semibold inline-block text-center w-full sm:w-auto"
@@ -66,6 +68,7 @@ export default function Home() {
           >
             Features
           </motion.h2>
+          {/* Responsive Grid Layout */}
           <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               "🛡️ Moderation: Powerful tools to keep your server safe.",
@@ -99,6 +102,7 @@ export default function Home() {
           >
             Commands
           </motion.h2>
+          {/* Responsive Table */}
           <div className="overflow-x-auto">
             <table className="mt-6 w-full table-auto border-collapse border border-gray-700 text-sm md:text-base">
               <thead className="bg-gray-800">
@@ -142,6 +146,7 @@ export default function Home() {
           >
             Get Started
           </motion.h2>
+          {/* Ordered Steps */}
           <ol className="mt-6 list-decimal list-inside space-y-2 text-lg">
             {[
               "Click the Invite HypheN button above.",
@@ -167,8 +172,8 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-8 text-center text-sm border-t border-gray-800">
         © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
+        {/* Footer Links */}
         <div className="mt-3 space-x-4">
-          {/* Footer Links */}
           <Link href="/privacy-policy" className="hover:text-blue-400 inline-block">
             Privacy Policy
           </Link>{" "}
@@ -185,4 +190,5 @@ export default function Home() {
     </div>
   );
 }
+
 

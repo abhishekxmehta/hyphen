@@ -74,54 +74,53 @@ export default function Home() {
           </motion.h2>
 
           {/* Interactive Boxes */}
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-  {[
-    { title: "🛡️ Moderation", description: "Powerful tools to keep your server safe including ban, kick, mute, and warning systems." },
-    { title: "🎉 Giveaways", description: "Host engaging giveaways with customizable duration, winners, and prizes." },
-    { title: "⚙️ Utilities", description: "Useful commands to simplify server management with role assignment, polls, and more." },
-    { title: "🎲 Fun Commands", description: "Interactive games and entertainment including memes, jokes, and trivia." },
-    { title: "🎵 Music", description: "High-quality music playback with queue management, volume control, and playlist support." },
-  ].map((feature, index) => (
-    <motion.div
-      key={index}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      onMouseEnter={() => setHoveredFeature(index)}
-      onMouseLeave={() => setHoveredFeature(null)}
-      whileHover={{ scale: 1.1 }}
-      className="bg-mocha-mousse p-6 rounded-lg shadow-lg text-center hover:bg-muted-rose transition-all duration-300 cursor-pointer relative"
-    >
-      <motion.div
-        initial={{ y: 0 }}
-        animate={{ y: hoveredFeature === index ? -5 : 0 }}
-        className="text-xl font-bold"
-      >
-        {feature.title}
-      </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+            {[
+              { title: "🛡️ Moderation", description: "Powerful tools to keep your server safe including ban, kick, mute, and warning systems." },
+              { title: "🎉 Giveaways", description: "Host engaging giveaways with customizable duration, winners, and prizes." },
+              { title: "⚙️ Utilities", description: "Useful commands to simplify server management with role assignment, polls, and more." },
+              { title: "🎲 Fun Commands", description: "Interactive games and entertainment including memes, jokes, and trivia." },
+              { title: "🎵 Music", description: "High-quality music playback with queue management, volume control, and playlist support." },
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onMouseEnter={() => setHoveredFeature(index)}
+                onMouseLeave={() => setHoveredFeature(null)}
+                whileHover={{ scale: 1.1 }}
+                className="bg-mocha-mousse p-6 rounded-lg shadow-lg text-center hover:bg-muted-rose transition-all duration-300 cursor-pointer relative"
+              >
+                <motion.div
+                  initial={{ y: 0 }}
+                  animate={{ y: hoveredFeature === index ? -5 : 0 }}
+                  className="text-xl font-bold"
+                >
+                  {feature.title}
+                </motion.div>
 
-      {/* Popup Box - Fixed positioning */}
-      {hoveredFeature === index && (
-        <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.8 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.3 }}
-          className="fixed mt-2 bg-crisp-white text-navy-blue p-4 rounded-lg shadow-lg z-50 w-64"
-          style={{
-            top: "auto",
-            left: "50%",
-            transform: "translateX(-50%)",
-            maxWidth: "250px"
-          }}
-        >
-          {feature.description}
-        </motion.div>
-      )}
-    </motion.div>
-  ))}
-</div>
-
+                {/* Popup Box - Fixed positioning */}
+                {hoveredFeature === index && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="fixed bg-crisp-white text-navy-blue p-4 rounded-lg shadow-lg z-50 w-64"
+                    style={{
+                      top: "auto",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      maxWidth: "250px"
+                    }}
+                  >
+                    {feature.description}
+                  </motion.div>
+                )}
+              </motion.div>
+            ))}
+          </div>
         </section>
 
         {/* Commands Section */}
@@ -310,8 +309,7 @@ export default function Home() {
             </motion.a>
           </div>
           
-          
-            </motion.a>
+          <div className="mt-6 flex justify-center space-x-6">
             <motion.a
               href="https://discord.gg/hyphen"
               whileHover={{ y: -5, color: "#7289DA" }}

@@ -37,14 +37,12 @@ export default function Home() {
           giveaways, utilities, fun commands, music, and more.
         </motion.p>
         <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4">
-          {/* Invite Button */}
           <Link
             href={inviteLink}
             className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold inline-block text-center w-full sm:w-auto"
           >
             Invite HypheN
           </Link>
-          {/* Join Community Button */}
           <Link
             href="https://discord.gg/hyphen"
             className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-semibold inline-block text-center w-full sm:w-auto"
@@ -56,6 +54,7 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 py-8 space-y-12">
+        
         {/* Features Section */}
         <section>
           <motion.h2
@@ -162,6 +161,7 @@ export default function Home() {
             ))}
           </ol>
         </section>
+
       </main>
 
       {/* Footer */}

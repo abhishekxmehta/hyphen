@@ -67,7 +67,7 @@ export default function Home() {
           >
             Features
           </motion.h2>
-          <ul className="mt-6 space-y-3 text-lg md:grid md:grid-cols-2 gap-4">
+          <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               "🛡️ Moderation: Powerful tools to keep your server safe.",
               "🎉 Giveaways: Host engaging giveaways easily.",
@@ -81,7 +81,7 @@ export default function Home() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="bg-gray-800 p-4 rounded-lg"
+                className="bg-gray-800 p-4 rounded-lg text-sm md:text-base"
               >
                 {feature}
               </motion.li>
@@ -185,3 +185,4 @@ export default function Home() {
     </div>
   );
 }
+

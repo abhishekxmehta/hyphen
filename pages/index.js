@@ -277,10 +277,6 @@ export default function Home() {
                 answer: "Join our support server and create a ticket in the #support channel." 
               },
               { 
-                question: "Can I customize command prefixes?", 
-                answer: "Yes, you can set custom prefixes using the /prefix command." 
-              },
-              { 
                 question: "Is HypheN always online?", 
                 answer: "We maintain 99.9% uptime to ensure HypheN is available whenever you need it." 
               },
@@ -353,3 +349,4 @@ export default function Home() {
     </div>
   );
 }
+

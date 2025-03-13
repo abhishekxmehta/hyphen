@@ -154,9 +154,7 @@ export default function Home() {
   © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
   {/* Footer Links */}
   <div className="mt-4 space-x-4">
-    <a href="#" className="hover:text-gold">Privacy Policy</a> |
-    <a href="#" className="hover:text-gold">Terms of Service</a> |
-    <a href="#" className="hover:text-gold">Discord Community</a>
+    
   </div>
   {/* Made with ❤️ by Avi911 */}
   <div className="mt-6">

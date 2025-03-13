@@ -55,6 +55,7 @@ export default function Home() {
       <main className="max-w-6xl mx-auto px-4 py-16 space-y-12">
         <section id="features">
           <h2 className="text-center text-3xl font-bold mb-8">Features</h2>
+          {/* Interactive Boxes */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               "🛡️ Moderation: Powerful tools to keep your server safe.",
@@ -65,10 +66,9 @@ export default function Home() {
             ].map((feature, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                initial={{ scale: 1 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 300 }}
                 className="bg-gray-800 p-6 rounded-lg shadow-lg text-center"
               >
                 {feature}
@@ -80,6 +80,7 @@ export default function Home() {
         {/* Commands Section */}
         <section id="commands">
           <h2 className="text-center text-3xl font-bold mb-8">Commands</h2>
+          {/* Responsive Table */}
           <div className="overflow-x-auto">
             <table className="w-full table-auto border-collapse border border-gray-700 text-sm md:text-base">
               <thead className="bg-gray-800">
@@ -98,10 +99,9 @@ export default function Home() {
                 ].map(([category, cmds], index) => (
                   <motion.tr
                     key={category}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.2 }}
+                    initial={{ scale: 1 }}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300 }}
                   >
                     <td className="border border-gray-700 px-4 py-2">{category}</td>
                     <td className="border border-gray-700 px-4 py-2">{cmds}</td>
@@ -115,6 +115,7 @@ export default function Home() {
         {/* Get Started Section */}
         <section id="get-started" className="text-center">
           <h2 className="text-center text-3xl font-bold mb-8">Get Started</h2>
+          {/* Ordered Steps */}
           <ol className="list-decimal list-inside space-y-4 text-lg max-w-md mx-auto">
             {[
               "Click the Invite HypheN button above.",
@@ -131,6 +132,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-8 text-center bg-gray-800">
         © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
+        {/* Footer Links */}
         <div className="mt-4 space-x-4">
           <a href="#" className="hover:text-blue-400">Privacy Policy</a> |
           <a href="#" className="hover:text-blue-400">Terms of Service</a> |

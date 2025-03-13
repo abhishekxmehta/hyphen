@@ -1,23 +1,12 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { Typewriter } from 'react-simple-typewriter';
 
 export default function Home() {
   const inviteLink =
     "https://discord.com/oauth2/authorize?client_id=1338616254046535700&permissions=8&integration_type=0&scope=bot";
 
-  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
-
-  const handleMouseMove = (e) => {
-    setMousePosition({ x: e.clientX, y: e.clientY });
-  };
-
   return (
-    <div
-      className="bg-gradient-to-b from-gray-900 to-gray-800 text-white min-h-screen"
-      onMouseMove={handleMouseMove}
-    >
+    <div className="bg-gradient-to-b from-gray-900 to-gray-800 text-white min-h-screen">
       <Head>
         <title>HypheN | Discord Bot</title>
         <meta
@@ -27,49 +16,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      {/* Mouse Follow Effect */}
-      <motion.div
-        className="absolute w-10 h-10 bg-yellow-500 rounded-full pointer-events-none"
-        style={{
-          top: mousePosition.y - 20,
-          left: mousePosition.x - 20,
-        }}
-        animate={{
-          x: mousePosition.x,
-          y: mousePosition.y,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 300,
-          damping: 30,
-        }}
-      />
-
       {/* Hero Section */}
-      <header className="relative text-center py-16 px-4 bg-gradient-to-r from-navy-blue to-muted-rose overflow-hidden">
-        {/* Parallax Background */}
-        <motion.div
-          className="absolute inset-0 bg-[url('/path-to-your-image.jpg')] bg-cover bg-center"
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-          style={{ zIndex: -1, opacity: 0.5 }}
-        />
+      <header className="text-center py-16 px-4 bg-gradient-to-r from-navy-blue to-muted-rose">
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           className="text-5xl font-bold text-gold"
         >
-          <Typewriter
-            words={['Meet HypheN', 'Your Server Assistant', 'Moderation Made Easy']}
-            loop={true}
-            cursor
-            cursorStyle="_"
-            typeSpeed={70}
-            deleteSpeed={50}
-            delaySpeed={1000}
-          />
+          Meet HypheN
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
@@ -82,29 +37,19 @@ export default function Home() {
         </motion.p>
         <div className="mt-6 flex justify-center gap-4">
           {/* Invite HypheN Button */}
-          <motion.a
+          <a
             href={inviteLink}
-            whileHover={{
-              scale: 1.1,
-              boxShadow: "0px 0px 15px rgba(255, 215, 0, 0.8)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-sunny-yellow hover:bg-gold px-6 py-3 rounded-lg font-semibold text-navy-blue shadow-md transition-transform"
+            className="bg-sunny-yellow hover:bg-gold px-6 py-3 rounded-lg font-semibold text-navy-blue shadow-md transition-transform transform hover:scale-105"
           >
             Invite HypheN
-          </motion.a>
+          </a>
           {/* Join Community Button */}
-          <motion.a
+          <a
             href="https://discord.gg/hyphen"
-            whileHover={{
-              scale: 1.1,
-              boxShadow: "0px 0px 15px rgba(255, 215, 0, 0.8)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-sunny-yellow hover:bg-gold px-6 py-3 rounded-lg font-semibold text-navy-blue shadow-md transition-transform"
+            className="bg-sunny-yellow hover:bg-gold px-6 py-3 rounded-lg font-semibold text-navy-blue shadow-md transition-transform transform hover:scale-105"
           >
             Join Community
-          </motion.a>
+          </a>
         </div>
       </header>
 
@@ -112,7 +57,7 @@ export default function Home() {
       <main className="max-w-6xl mx-auto px-4 py-16 space-y-12">
         <section id="features">
           <motion.h2
-            initial={{ opacity: 0, y: -50 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -120,22 +65,22 @@ export default function Home() {
           >
             Features
           </motion.h2>
-
+          
           {/* Interactive Boxes */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              "🛡️ Moderation",
-              "🎉 Giveaways",
-              "⚙️ Utilities",
-              "🎲 Fun Commands",
-              "🎵 Music",
+              "🛡️ Moderation: Powerful tools to keep your server safe.",
+              "🎉 Giveaways: Host engaging giveaways easily.",
+              "⚙️ Utilities: Useful commands to simplify server management.",
+              "🎲 Fun Commands: Interactive games and entertainment.",
+              "🎵 Music: High-quality music playback.",
             ].map((feature, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : +50 }} // Alternate directions
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: index * 0.3 + .5 }} // Staggered reveal effect
+                transition={{ duration: 0.6, delay: index * 0.2 }} // Staggered animation
                 className="bg-mocha-mousse p-6 rounded-lg shadow-lg text-center hover:bg-muted-rose transition-colors"
               >
                 {feature}
@@ -147,7 +92,7 @@ export default function Home() {
         {/* Commands Section */}
         <section id="commands">
           <motion.h2
-            initial={{ opacity: 0, y: -50 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -155,7 +100,7 @@ export default function Home() {
           >
             Commands
           </motion.h2>
-
+          
           {/* Scroll Animation */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -173,16 +118,62 @@ export default function Home() {
               </thead>
               <tbody className="text-center">
                 {[
-                  ["Moderation 🛡️", "/ban, /kick"],
-                  ["Giveaways 🎉", "/giveaway start"],
-                  ["Utilities ⚙️", "/serverinfo"],
-                  ["Fun 🎲", "/meme"],
-                  ["Music 🎵", "/play"],
-                ].map(([category], index) => (
+                  ["Moderation 🛡️", "/ban, /kick, /mute, /warn, /purge"],
+                  ["Giveaways 🎉", "/giveaway start, /giveaway end, /reroll"],
+                  ["Utilities ⚙️", "/serverinfo, /userinfo, /avatar"],
+                  ["Fun 🎲", "/meme", "/8ball", "/joke"],
+                  ["Music 🎵", "/play", "/pause", "/queue", "/skip"],
+                ].map(([category, cmds], index) => (
+                  <motion.tr
+                    key={category}
+                    initial={{ scale: 1 }}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <td className="border border-gray-700 px-4 py-2">{category}</td>
+                    <td className="border border-gray-700 px-4 py-2">{cmds}</td>
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
+          </motion.div>
+        </section>
+
+        {/* Get Started Section */}
+        <section id="get-started" className="text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center text-3xl font-bold mb-8 text-gold"
+          >
+            Get Started
+          </motion.h2>
+
+          {/* Scroll Animation */}
+          <motion.ol
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="list-decimal list-inside space-y-4 text-lg max-w-md mx-auto"
+          >
+            {[
+              "Click the Invite HypheN button above.",
+              "Select your Discord server from the dropdown menu.",
+              "Authorize required permissions for HypheN.",
+              "Enjoy all the powerful features HypheN provides!",
+            ].map((step, index) => (
+              <li key={index}>{step}</li>
+            ))}
+          </motion.ol>
+        </section>
+      </main>
+
       {/* Footer */}
       <footer className="py-8 text-center bg-navy-blue text-crisp-white">
         © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
-        
         {/* Footer Links */}
         <div className="mt-4 space-x-4">
           Made with ❤️ by{' '}
@@ -192,10 +183,10 @@ export default function Home() {
             rel="noopener noreferrer"
             className="text-gold hover:text-muted-yellow underline"
           >
-            Avi911
+            avi911
           </a>.
-          
-           | 
-          
-           Privacy Policy | Terms of Use.
-
+        </div>
+      </footer>
+    </div>
+  );
+}

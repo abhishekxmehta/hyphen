@@ -167,7 +167,7 @@ export default function Home() {
       rel="noopener noreferrer"
       className="text-gold hover:underline"
     >
-      Avi911
+      avi911
     </a>
   </div>
 </footer>

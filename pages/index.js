@@ -288,40 +288,54 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="py-8 text-center bg-navy-blue text-crisp-white">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
-          
-          {/* Footer Links */}
-          <div className="mt-4 space-x-4">
-            Made with ❤️ by{' '}
-            <motion.a
-              href="https://discordapp.com/users/724914345003188265"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, color: "#FFD700" }}
-              className="text-gold hover:text-muted-yellow underline"
-            >
-              avi911
-            </motion.a>
-          </div>
-          
-          <div className="mt-6 flex justify-center space-x-6">
-            <motion.a
-              href="https://discord.gg/hyphen"
-              whileHover={{ y: -5, color: "#7289DA" }}
-              className="text-crisp-white hover:text-indigo-400"
-            >
-              Discord
-            </motion.a>
-          </div>
-        </motion.div>
-      </footer>
+<footer className="py-8 text-center bg-navy-blue text-crisp-white">
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5 }}
+  >
+    © {new Date().getFullYear()} HypheN Bot. All Rights Reserved.
+    
+    {/* Footer Links */}
+    <div className="mt-4 space-x-4">
+      Website made with ❤️ by{' '}
+      <motion.a
+        href="https://discordapp.com/users/724914345003188265"
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.1, color: "#FFD700" }}
+        className="text-gold hover:text-muted-yellow underline"
+      >
+        avi911
+      </motion.a>
+    </div>
+    
+    <div className="mt-2 space-x-4">
+      Bot made by{' '}
+      <motion.a
+        href="https://discordapp.com/users/1347572891302236231"
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.1, color: "#FFD700" }}
+        className="text-gold hover:text-muted-yellow underline"
+      >
+        yellowflash
+      </motion.a>
+    </div>
+    
+    <div className="mt-6 flex justify-center space-x-6">
+      <motion.a
+        href="https://discord.gg/hyphen"
+        whileHover={{ y: -5, color: "#7289DA" }}
+        className="text-crisp-white hover:text-indigo-400"
+      >
+        Discord
+      </motion.a>
+    </div>
+  </motion.div>
+</footer>
+
     </div>
   );
 }
